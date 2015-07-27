@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.5.0"
+  },
+  "applications": {
+    "AngularTest": {
+      "applicationId": "sGr4XrU8eqj0PdFk0VPsGtShG6V7ZRf5V4tdR1mQ",
+      "masterKey": "CZNDvvtJfg7r6rayOtpP5a8wU30NAqG8iOLhDMNv"
+    },
+    "_default": {
+      "link": "AngularTest"
+    }
+  }
+}

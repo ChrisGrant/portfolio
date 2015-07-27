@@ -1,0 +1,81 @@
+<div class="admin admin-users admin-users-create">
+
+  <div class="text-center">
+    <h3>Add New User</h3>
+  </div>
+
+  <form ng-submit="createUserController.createUser(createUserController.user)" novalidate>
+
+    <div id="errorAlert" ng-show="createUserController.showError">
+      <hr/>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <span>{{ createUserController.errorMessage }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="firstNameField">First Name</label>
+      <input id="firstNameField"
+             type="text"
+             class="form-control"
+             placeholder="First Name"
+             ng-model="createUserController.user.firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="secondNameField">Last Name</label>
+      <input id="secondNameField"
+             type="text"
+             class="form-control"
+             placeholder="Last Name"
+             ng-model="createUserController.user.lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="emailField">Email</label>
+      <input id="emailField"
+             type="text"
+             class="form-control"
+             placeholder="Email Address"
+             ng-model="createUserController.user.email">
+    </div>
+
+    <div class="form-group">
+      <label for="usernameField">Username</label>
+      <input id="usernameField"
+             type="text"
+             class="form-control"
+             placeholder="Username"
+             ng-model="createUserController.user.username">
+    </div>
+
+    <div class="form-group">
+      <label for="passwordField">Password</label>
+      <input id="passwordField"
+             type="text"
+             class="form-control"
+             placeholder="Password"
+             ng-model="createUserController.user.password">
+    </div>
+
+    <div class="form-group">
+    <label for="corporationField">Corporation</label>
+    <select id="corporationField"
+            ng-model="createUserController.user.corporation"
+            ng-options="x.id as x.attributes.name for x in createUserController.corporations"
+            class="form-control">
+    </select>
+    </div>
+
+    <hr/>
+
+    <button type="submit" class="btn btn-success pull-right">
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+      Save
+    </button>
+
+  </form>
+
+</div>
