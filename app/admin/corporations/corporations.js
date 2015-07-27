@@ -7,7 +7,7 @@ define(['./corporationsController', 'text!./corporations.html'], function(corpor
       replace: true,
       template: template,
       controllerAs: 'corporationsController',
-      controller: ['$scope', 'corporationsService', corporationsController]
+      controller: ['$scope', '$state', 'corporationsService', corporationsController]
     };
   };
 });

@@ -1,0 +1,61 @@
+<table class="table table-hover">
+  <thead>
+    <td>
+      <a ng-click="usersController.sortClicked('firstName')">
+        First Name
+        <span ng-show="usersController.sortType == 'firstName'"
+              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+              class="glyphicon"
+              aria-hidden="true">
+        </span>
+      </a>
+    </td>
+    <td>
+      <a ng-click="usersController.sortClicked('lastName')">
+        Last Name
+        <span ng-show="usersController.sortType == 'lastName'"
+              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+              class="glyphicon"
+              aria-hidden="true">
+        </span>
+      </a>
+    </td>
+    <td>
+      <a ng-click="usersController.sortClicked('username')">
+        Username
+        <span ng-show="usersController.sortType == 'username'"
+              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+              class="glyphicon"
+              aria-hidden="true">
+        </span>
+      </a>
+    </td>
+    <td>
+      <a ng-click="usersController.sortClicked('email')">
+        Email
+        <span ng-show="usersController.sortType == 'email'"
+              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+              class="glyphicon"
+              aria-hidden="true">
+        </span>
+      </a>
+    </td>
+  </thead>
+
+  <tr ng-repeat="contact in usersController.contacts">
+    <td>{{ contact.attributes.firstName }}</td>
+    <td>{{ contact.attributes.lastName }}</td>
+    <td>{{ contact.attributes.username }}</td>
+    <td>{{ contact.attributes.email }}</td>
+  </tr>
+
+  <tfoot>
+    <td colspan="3">
+      <pagination-bar current-page="usersController.currentPage" 
+                      number-of-items="usersController.numberOfContacts"
+                      page-changed="usersController.pageChanged">
+      </pagination-bar>
+    </td>
+  </tfoot>
+
+</table>
