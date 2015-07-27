@@ -22,7 +22,7 @@ define(['Parse'], function(Parse) {
 
           // Filtering
           if (searchTerm !== undefined && searchTerm.length > 0) {
-            query.startsWith("username", searchTerm);
+            query.startsWith("name", searchTerm);
           }
 
           query.skip(pageNumber * pageCount);
@@ -39,9 +39,25 @@ define(['Parse'], function(Parse) {
           return query.count();
       };
 
+      var save = function(corporation) {
+        return corporation.save();
+      };
+
+      var removeCorporation = function(corporation) {
+        return corporation.destroy();
+      };
+
+      var getCorporationWithName = function(name) {
+        var query = new Parse.Query(Corporation);
+        query.equalTo("name", name);
+        return query.first();
+      };
+
       return {
           getCorporationPage: getCorporationPage,
-          getNumberOfCorporations: getNumberOfCorporations
+          getNumberOfCorporations: getNumberOfCorporations,
+          save: save,
+          getCorporationWithName: getCorporationWithName
       };
     };
 

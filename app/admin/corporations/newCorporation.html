@@ -1,0 +1,36 @@
+<div class="new-corporation">
+
+  <div class="text-center">
+    <h3>Add New Corporation</h3>
+  </div>
+
+  <form ng-submit="newCorporationController.save(corporation)" novalidate>
+
+    <div class="form-group">
+      <label for="corporationNameField">Name</label>
+      <input id="corporationNameField"
+             type="text"
+             class="form-control"
+             placeholder="Corporation Name"
+             ng-model="corporation.name">
+    </div>
+
+    <div class="form-group">
+      <label for="corporationDescriptionField">Description</label>
+      <textarea id="corporationDescriptionField"
+                class="form-control"
+                rows="3"
+                ng-model="corporation.description">
+      </textarea>
+    </div>
+  
+    <hr/>
+
+    <button type="submit" class="btn btn-success pull-right">
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+      Save
+    </button>
+
+  </form>
+
+</div>
