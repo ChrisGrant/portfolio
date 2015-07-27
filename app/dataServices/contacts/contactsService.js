@@ -46,11 +46,17 @@ define(['Parse'], function(Parse) {
             return query.count();
         };
 
+        var createNewUser = function(user) {
+            // Need to do this in the cloud for security reasons.
+            return Parse.Cloud.run('createNewUser', user);
+        };
+
         return {
             getContacts: getContacts,
             getContactById: getContactById,
             getContactsListPage: getContactsListPage,
-            getNumberOfContacts: getNumberOfContacts
+            getNumberOfContacts: getNumberOfContacts,
+            createNewUser: createNewUser
         };
     };
 });

@@ -2,21 +2,25 @@
 
 define([
     'angular',
+    '../../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls',
     './adminLayout/adminLayout',
     './users/users',
+    './users/createUser/createUser',
     './corporations/corporations',
     './corporations/newCorporation',
     './corporations/corporationDetail',
     'dataServices/dataServicesModule',
-], function(angular, adminLayout, users, corporations, newCorporation, corporationDetail) {
+], function(angular, uibootstrap, adminLayout, users, createUser, corporations, newCorporation, corporationDetail) {
     return angular
     .module('portfolio.admin', [
         'portfolio.dataServices',
-        'portfolio.common'
+        'portfolio.common',
+        'ui.bootstrap'
     ])
 
     .directive('adminLayout', [adminLayout])
     .directive('users', [users])
+    .directive('createUser', [createUser])
     .directive('corporations', [corporations])
     .directive('newCorporation', [newCorporation])
     .directive('corporationDetail', [corporationDetail])
@@ -40,6 +44,14 @@ define([
           views: {
             'admin-content@app.admin': {
               template: '<users></users>'
+            }
+          }
+        })
+        .state('app.admin.users.create', {
+          url: '/create',
+          views: {
+            'admin-content@app.admin': {
+              template: '<create-user></create-user>'
             }
           }
         })

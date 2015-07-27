@@ -6,6 +6,7 @@
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "devDependencies": {
+    "angular-ui-bootstrap": "^0.13.1",
     "grunt": "^0.4.5",
     "grunt-concurrent": "^2.0.0",
     "grunt-config": "^0.3.1",

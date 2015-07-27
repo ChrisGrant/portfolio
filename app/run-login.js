@@ -42,6 +42,9 @@ define([
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
             console.error('User is not allowed to see this page. ' + next);
             event.preventDefault();
+
+            authenticationService.logOut();
+
             return;
           }
           else if (next.name !== 'login') {

@@ -1,61 +1,89 @@
-<table class="table table-hover">
-  <thead>
-    <td>
-      <a ng-click="usersController.sortClicked('firstName')">
-        First Name
-        <span ng-show="usersController.sortType == 'firstName'"
-              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
-    <td>
-      <a ng-click="usersController.sortClicked('lastName')">
-        Last Name
-        <span ng-show="usersController.sortType == 'lastName'"
-              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
-    <td>
-      <a ng-click="usersController.sortClicked('username')">
-        Username
-        <span ng-show="usersController.sortType == 'username'"
-              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
-    <td>
-      <a ng-click="usersController.sortClicked('email')">
-        Email
-        <span ng-show="usersController.sortType == 'email'"
-              ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
-  </thead>
+<div class="admin admin-users">
 
-  <tr ng-repeat="contact in usersController.contacts">
-    <td>{{ contact.attributes.firstName }}</td>
-    <td>{{ contact.attributes.lastName }}</td>
-    <td>{{ contact.attributes.username }}</td>
-    <td>{{ contact.attributes.email }}</td>
-  </tr>
+  <a class="btn btn-success pull-right" ui-sref='app.admin.users.create'>
+    Create New User
+  </a>
 
-  <tfoot>
-    <td colspan="3">
-      <pagination-bar current-page="usersController.currentPage" 
-                      number-of-items="usersController.numberOfContacts"
-                      page-changed="usersController.pageChanged">
-      </pagination-bar>
-    </td>
-  </tfoot>
+  <h3>Users</h3>
 
-</table>
+  <table class="table table-hover table-striped">
+    <thead>
+      <td>
+        <a ng-click="usersController.sortClicked('firstName')">
+          First Name
+          <span ng-show="usersController.sortType == 'firstName'"
+                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+      <td>
+        <a ng-click="usersController.sortClicked('lastName')">
+          Last Name
+          <span ng-show="usersController.sortType == 'lastName'"
+                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+      <td>
+        <a ng-click="usersController.sortClicked('corporation.name')">
+          Corporation
+          <span ng-show="usersController.sortType == 'corporation'"
+                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+      <td>
+        <a ng-click="usersController.sortClicked('username')">
+          Username
+          <span ng-show="usersController.sortType == 'username'"
+                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+      <td>
+        <a ng-click="usersController.sortClicked('email')">
+          Email
+          <span ng-show="usersController.sortType == 'email'"
+                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+    </thead>
+
+    <tr ng-repeat="contact in usersController.contacts">
+      <td>{{ contact.attributes.firstName }}</td>
+      <td>{{ contact.attributes.lastName }}</td>
+      <td>{{ contact.attributes.corporation }}</td>
+      <td>{{ contact.attributes.username }}</td>
+      <td>{{ contact.attributes.email }}</td>
+    </tr>
+
+    <tfoot>
+      <td colspan="5" class="text-center">
+            <pagination boundary-links="true" 
+                        total-items="totalItems"
+                        items-per-page="usersController.itemsPerPage"
+                        ng-model="currentPage"
+                        ng-change="usersController.pageChanged()"
+                        class="pagination-sm"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;">
+            </pagination>
+      </td>
+    </tfoot>
+
+  </table>
+
+</div>
