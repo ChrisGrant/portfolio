@@ -1,0 +1,61 @@
+<div class="admin-edit-user">
+
+  <div class="text-center">
+    <h3>Edit User</h3>
+  </div>
+
+  <form ng-submit="editUserController.updateUser(editUserController.user)" novalidate>
+
+    <div id="errorAlert" ng-show="editUserController.showError">
+      <hr/>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <span>{{ editUserController.errorMessage }}</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="firstNameField">First Name</label>
+      <input id="firstNameField"
+             type="text"
+             class="form-control"
+             placeholder="First Name"
+             ng-model="editUserController.user.firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="secondNameField">Last Name</label>
+      <input id="secondNameField"
+             type="text"
+             class="form-control"
+             placeholder="Last Name"
+             ng-model="editUserController.user.lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="emailField">Email</label>
+      <input id="emailField"
+             type="text"
+             class="form-control"
+             placeholder="Email Address"
+             ng-model="editUserController.user.email">
+    </div>
+
+    <div class="form-group">
+      <label for="usernameField">Username</label>
+      <input id="usernameField"
+             type="text"
+             class="form-control"
+             placeholder="Username"
+             ng-model="editUserController.user.username">
+    </div>
+
+    <hr/>
+
+    <button type="submit" class="btn btn-success pull-right" ng-click="editUserController.updateUser(editUserController.user)">
+      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+      Save
+    </button>
+
+</div>

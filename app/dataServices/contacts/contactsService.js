@@ -19,6 +19,10 @@ define(['Parse'], function(Parse) {
             return Parse.Cloud.run('deleteUser', {"userId": user.id});
         };
 
+        var updateUser = function(user) {
+          return Parse.Cloud.run('updateUser', user);
+        };
+
         var getContactsListPage = function(pageNumber, pageCount, sortKey, descending, searchTerm, corporation) {
             var query = new Parse.Query(Parse.User);
             query.limit(pageCount);
@@ -72,7 +76,8 @@ define(['Parse'], function(Parse) {
             getContactsListPage: getContactsListPage,
             getNumberOfContacts: getNumberOfContacts,
             createNewUser: createNewUser,
-            deleteUser: deleteUser
+            deleteUser: deleteUser,
+            updateUser: updateUser
         };
     };
 });

@@ -7,11 +7,12 @@ define([
     './users/users',
     './users/createUser/createUser',
     './users/userDetail/userDetail',
+    './users/userDetail/editUser/editUser',
     './corporations/corporations',
     './corporations/newCorporation',
     './corporations/corporationDetail',
     'dataServices/dataServicesModule',
-], function(angular, uibootstrap, adminLayout, users, createUser, userDetail, corporations, newCorporation, corporationDetail) {
+], function(angular, uibootstrap, adminLayout, users, createUser, userDetail, editUser, corporations, newCorporation, corporationDetail) {
     return angular
     .module('portfolio.admin', [
         'portfolio.dataServices',
@@ -22,6 +23,7 @@ define([
     .directive('adminLayout', [adminLayout])
     .directive('users', [users])
     .directive('createUser', [createUser])
+    .directive('editUser', [editUser])
     .directive('userDetail', [userDetail])
     .directive('corporations', [corporations])
     .directive('newCorporation', [newCorporation])
@@ -62,6 +64,14 @@ define([
           views: {
             'admin-content@app.admin': {
               template: '<user-detail></user-detail>'
+            }
+          }
+        })
+        .state('app.admin.users.detail.edit', {
+          url: '/edit',
+          views: {
+            'admin-content@app.admin': {
+              template: '<edit-user></edit-user>'
             }
           }
         })
