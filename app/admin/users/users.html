@@ -29,7 +29,7 @@
         </a>
       </td>
       <td>
-        <a ng-click="usersController.sortClicked('corporation.name')">
+        <a ng-click="usersController.sortClicked('corporation')">
           Corporation
           <span ng-show="usersController.sortType == 'corporation'"
                 ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
@@ -60,10 +60,10 @@
       </td>
     </thead>
 
-    <tr ng-repeat="contact in usersController.contacts">
+    <tr ng-repeat="contact in usersController.contacts" ui-sref="app.admin.users.detail({ id: contact.attributes.username })">
       <td>{{ contact.attributes.firstName }}</td>
       <td>{{ contact.attributes.lastName }}</td>
-      <td>{{ contact.attributes.corporation }}</td>
+      <td>{{ contact.attributes.corporation.attributes.name }}</td>
       <td>{{ contact.attributes.username }}</td>
       <td>{{ contact.attributes.email }}</td>
     </tr>

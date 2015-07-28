@@ -1,0 +1,18 @@
+<div>
+  <div class="modal-header">
+      <h3 class="modal-title"><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Delete User</h3>
+  </div>
+  <div class="modal-body text-center">
+
+    <p>You can not undo this action. This will remove the user's access and they will no longer be able to see information on this system.</p>
+
+    <button class="btn btn-sm btn-danger" ng-click="userDetailDeleteModalController.ok()">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      Delete User
+    </button>
+
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-primary" ng-click="userDetailDeleteModalController.cancel()">Cancel</button>
+  </div>
+</div>

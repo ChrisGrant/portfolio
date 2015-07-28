@@ -1,7 +1,7 @@
 'use strict';
 
 define([], function() {
-    return function($scope, contactsService, corporationsService) {
+    return function($scope, $state, contactsService, corporationsService) {
 
       this.user = {};
       this.showError = false;
@@ -22,9 +22,7 @@ define([], function() {
         self.showError = false;
 
         contactsService.createNewUser(user).then(function() {
-          // TODO show user detail page.
-          console.log('user created');
-          $scope.$apply();
+          $state.go("app.admin.users.detail", {"id": user.username});
         },
         function(error){
           self.showError = true;

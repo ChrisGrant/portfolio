@@ -6,7 +6,7 @@ define(['./createUserController', 'text!./createUser.html'], function(createUser
             restrict: 'E',
             template: template,
             scope: {},
-            controller: ['$scope', 'contactsService', 'corporationsService', createUserController],
+            controller: ['$scope', '$state', 'contactsService', 'corporationsService', createUserController],
             controllerAs: 'createUserController'
         };
     };
