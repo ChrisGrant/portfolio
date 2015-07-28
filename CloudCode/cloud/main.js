@@ -1,5 +1,38 @@
-Parse.Cloud.define("createNewUser", function(request, response) {
+Parse.Cloud.define("deleteUser", function(request, response) {
+  Parse.Cloud.useMasterKey();
 
+  // TODO: Auth check
+
+  var userId = request.params.userId;
+
+  var query = new Parse.Query(Parse.User);
+  query.equalTo("objectId", userId);
+  query.find({
+    success: function(users) {
+      if (users.length !== 1) {
+        response.error("Could not find user with user ID '+ userID + '.")
+        return;
+      }
+
+      var user = users[0];
+      user.destroy({
+        success: function() {
+          response.success();
+        },
+        error: function(user, error) {
+          response.error("Could not delete user: " + error.message);
+        }
+      });
+
+    },
+    error: function(error) {
+      response.error('Could not find user with ID '+ userID + '.');
+    }
+  });
+
+});
+
+Parse.Cloud.define("createNewUser", function(request, response) {
   Parse.Cloud.useMasterKey();
 
   // TODO: Auth check

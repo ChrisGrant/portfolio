@@ -19,7 +19,15 @@ define(['text!./userDetailDeleteModal.html', './userDetailDeleteModalController.
         });
 
         modalInstance.result.then(function(selectedIndex) {
-          console.log('selected index ' + selectedIndex);
+          if (selectedIndex === 0) {
+            console.log('deleting user...');
+            contactsService.deleteUser(self.user).then(function() {
+              $state.go('app.admin.users');
+            },
+            function(error) {
+              console.error('Could not delete user - ' + error.message);
+            });
+          }
         });
 
       };

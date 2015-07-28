@@ -14,6 +14,11 @@ define(['Parse'], function(Parse) {
             return query.first();
         };
 
+        var deleteUser = function(user) {
+            // Need to do this in the cloud for security reasons.
+            return Parse.Cloud.run('deleteUser', {"userId": user.id});
+        };
+
         var getContactsListPage = function(pageNumber, pageCount, sortKey, descending, searchTerm) {
             var query = new Parse.Query(Parse.User);
             query.limit(pageCount);
@@ -31,7 +36,7 @@ define(['Parse'], function(Parse) {
 
             // Filtering
             if (searchTerm !== undefined && searchTerm.length > 0) {
-                query.startsWith("username", searchTerm);
+              query.startsWith("username", searchTerm);
             }
 
             query.skip(pageNumber * pageCount);
@@ -42,7 +47,7 @@ define(['Parse'], function(Parse) {
             var query = new Parse.Query(Parse.User);
 
             if (searchTerm !== undefined && searchTerm.length > 0) {
-                query.startsWith("username", searchTerm);
+              query.startsWith("username", searchTerm);
             }
 
             return query.count();
@@ -58,7 +63,8 @@ define(['Parse'], function(Parse) {
             getContactById: getContactById,
             getContactsListPage: getContactsListPage,
             getNumberOfContacts: getNumberOfContacts,
-            createNewUser: createNewUser
+            createNewUser: createNewUser,
+            deleteUser: deleteUser
         };
     };
 });
