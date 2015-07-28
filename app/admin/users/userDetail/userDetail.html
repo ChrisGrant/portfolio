@@ -14,6 +14,8 @@
   <span>{{ userDetailController.user.createdAt | date : medium }}</span>
   <h5>Account Last Updated:</h5>
   <span>{{ userDetailController.user.updatedAt | date : medium }}</span>
+  <h5>Corporation:</h5>
+  <span>{{ userDetailController.user.attributes.corporation.attributes.name }}</span>
 
   <hr/>
   

@@ -8,17 +8,18 @@
 
   <table class="table table-hover table-striped">
     <thead>
-      <td>
+      <tr>
+      <th class="row-header row-first-name">
         <a ng-click="usersController.sortClicked('firstName')">
           First Name
           <span ng-show="usersController.sortType == 'firstName'"
                 ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-                class="glyphicon pull-right"
+                class="glyphicon"
                 aria-hidden="true">
           </span>
         </a>
-      </td>
-      <td>
+      </th>
+      <th class="row-header row-last-name">
         <a ng-click="usersController.sortClicked('lastName')">
           Last Name
           <span ng-show="usersController.sortType == 'lastName'"
@@ -27,11 +28,11 @@
                 aria-hidden="true">
           </span>
         </a>
-      </td>
-      <td>
+      </th>
+      <th class="row-header row-corporation">
         Corporation
         <div class="btn-group pull-right">
-          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-filter" arian-hidden="true"></span><span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
@@ -44,8 +45,8 @@
             </li>
           </ul>
         </div>
-      </td>
-      <td>
+      </th>
+      <th class="row-header row-username">
         <a ng-click="usersController.sortClicked('username')">
           Username
           <span ng-show="usersController.sortType == 'username'"
@@ -54,8 +55,8 @@
                 aria-hidden="true">
           </span>
         </a>
-      </td>
-      <td>
+      </th>
+      <th class="row-header row-email">
         <a ng-click="usersController.sortClicked('email')">
           Email
           <span ng-show="usersController.sortType == 'email'"
@@ -64,7 +65,8 @@
                 aria-hidden="true">
           </span>
         </a>
-      </td>
+      </th>
+      </tr>
     </thead>
 
     <tr ng-repeat="contact in usersController.contacts" ui-sref="app.admin.users.detail({ id: contact.attributes.username })">

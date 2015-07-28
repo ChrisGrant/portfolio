@@ -1,20 +1,57 @@
-.corporation-panel {
-  .thumbnail {
-    width:70px;
-    height:70px;
+  .corporation-panel {
+    .thumbnail {
+      width:70px;
+      height:70px;
 
-    .thumbnail-content {
+      .thumbnail-content {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }  
+    }
+
+    .panel-add {
+      text-align: center;
+      font-size: 2em;
+      background-color: #eee;
+    }
+  }
+
+  .admin-users {
+
+    table {
+      table-layout: fixed;
       width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }  
-  }
+      white-space: nowrap;
 
-  .panel-add {
-    text-align: center;
-    font-size: 2em;
-    background-color: #eee;
+      td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .row-header {
+        line-height:35px;
+      }
+
+      .row-first-name {
+        width:15%;
+      }
+      .row-last-name {
+        width:15%;
+      }
+      .row-corporation {
+        width:25%;
+      }
+      .row-username {
+        width:15%;
+      }
+      .row-email {
+        width:20%;
+      }
+
+    }
+
   }
-}

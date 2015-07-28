@@ -69,7 +69,7 @@ Parse.Cloud.define("createNewUser", function(request, response) {
     response.error("Please specify an email address for this user.");
     return;
   }
-  user.set("email", requestUser.email);
+  user.set("email", requestUser.email.toLowerCase());
   
   if (requestUser.corporation === undefined || requestUser.corporation.length < 1) {
     response.error("Please specify a corporation for this user.");

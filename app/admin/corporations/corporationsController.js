@@ -7,11 +7,7 @@ define([], function() {
 
     this.corporations = [];
 
-    corporationsService.getNumberOfCorporations().then(function(count) {
-      console.log(count);
-    });
-
-    corporationsService.getCorporationPage(0, 100, 'name', false).then(function(corporations) {
+    corporationsService.getCorporationPage(0, 9999, 'name', false).then(function(corporations) {
       self.corporations = corporations;
       $scope.$apply();
     });
