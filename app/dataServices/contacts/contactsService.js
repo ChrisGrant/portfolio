@@ -10,12 +10,14 @@ define(['Parse'], function(Parse) {
         var getContactById = function(id) {
             var query = new Parse.Query(Parse.User);
             query.equalTo("username", id);
+            query.include("corporation");
             return query.first();
         };
 
         var getContactsListPage = function(pageNumber, pageCount, sortKey, descending, searchTerm) {
             var query = new Parse.Query(Parse.User);
             query.limit(pageCount);
+            query.include("corporation");
             
             // Sorting
             if (sortKey !== undefined) {
