@@ -13,7 +13,7 @@
           First Name
           <span ng-show="usersController.sortType == 'firstName'"
                 ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-                class="glyphicon"
+                class="glyphicon pull-right"
                 aria-hidden="true">
           </span>
         </a>
@@ -29,14 +29,21 @@
         </a>
       </td>
       <td>
-        <a ng-click="usersController.sortClicked('corporation')">
-          Corporation
-          <span ng-show="usersController.sortType == 'corporation'"
-                ng-class="usersController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-                class="glyphicon"
-                aria-hidden="true">
-          </span>
-        </a>
+        Corporation
+        <div class="btn-group pull-right">
+          <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-filter" arian-hidden="true"></span><span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li ng-class="usersController.classForFilterItem()">
+              <a ng-click="usersController.removeCorporationFilter()">All</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li ng-repeat="corporation in usersController.corporations" ng-class="usersController.classForFilterItem(corporation)">
+              <a ng-click="usersController.selectedCorporationFilter(corporation)">{{corporation.attributes.name}}</a>
+            </li>
+          </ul>
+        </div>
       </td>
       <td>
         <a ng-click="usersController.sortClicked('username')">
@@ -68,7 +75,7 @@
       <td>{{ contact.attributes.email }}</td>
     </tr>
 
-    <tfoot>
+    <tfoot ng-show="totalItems > usersController.itemsPerPage">
       <td colspan="5" class="text-center">
             <pagination boundary-links="true" 
                         total-items="totalItems"

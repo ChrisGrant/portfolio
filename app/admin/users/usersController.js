@@ -1,7 +1,7 @@
 'use strict';
 
 define([], function() {
-    return function($scope, contactsService) {
+    return function($scope, contactsService, corporationsService) {
 
       var self = this;
 
@@ -10,6 +10,12 @@ define([], function() {
       this.searchTerm = '';
 
       this.itemsPerPage = 20;
+
+      this.corporations = [];
+
+      corporationsService.getCorporationPage(0, 999999, "name").then(function(corporations) {
+        self.corporations = corporations;
+      });
 
       this.pageChanged = function() {
         self.updateResults();
@@ -24,7 +30,7 @@ define([], function() {
       };
 
       this.updateNumberOfResults = function() {
-        var numberOfContactsPromise = contactsService.getNumberOfContacts(self.searchTerm);
+        var numberOfContactsPromise = contactsService.getNumberOfContacts(self.searchTerm, self.selectedCorporation);
         numberOfContactsPromise.then(function(numberOfContacts) {
           $scope.totalItems = numberOfContacts;
           self.updateResults();
@@ -32,7 +38,7 @@ define([], function() {
       };
 
       this.getResultsPage = function(pageNumber, sortKey, descending, searchTerm) {
-        var contactsPagePromise = contactsService.getContactsListPage(pageNumber, this.itemsPerPage, sortKey, descending, searchTerm);
+        var contactsPagePromise = contactsService.getContactsListPage(pageNumber, this.itemsPerPage, sortKey, descending, searchTerm, self.selectedCorporation);
         contactsPagePromise.then(function(contacts) {
           self.contacts = contacts;
           $scope.$apply();
@@ -50,6 +56,25 @@ define([], function() {
         self.updateResults();
       };
 
+
+      this.selectedCorporationFilter = function(corporation) {
+        self.selectedCorporation = corporation;
+        self.updateNumberOfResults();
+      };
+
+      this.removeCorporationFilter = function() {
+        self.selectedCorporation = undefined;
+        self.updateNumberOfResults();
+      };
+
       this.updateNumberOfResults();
+
+      this.classForFilterItem = function(corporation) {
+        if (corporation === self.selectedCorporation) {
+          return "active";
+        }
+        return "";
+      };
+
     };
 });

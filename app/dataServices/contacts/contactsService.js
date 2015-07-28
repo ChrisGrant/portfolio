@@ -19,7 +19,7 @@ define(['Parse'], function(Parse) {
             return Parse.Cloud.run('deleteUser', {"userId": user.id});
         };
 
-        var getContactsListPage = function(pageNumber, pageCount, sortKey, descending, searchTerm) {
+        var getContactsListPage = function(pageNumber, pageCount, sortKey, descending, searchTerm, corporation) {
             var query = new Parse.Query(Parse.User);
             query.limit(pageCount);
             query.include("corporation");
@@ -39,15 +39,23 @@ define(['Parse'], function(Parse) {
               query.startsWith("username", searchTerm);
             }
 
+            if (corporation !== undefined) {
+              query.equalTo("corporation", corporation);
+            }
+
             query.skip(pageNumber * pageCount);
             return query.find();
         };
 
-        var getNumberOfContacts = function(searchTerm) {
+        var getNumberOfContacts = function(searchTerm, corporation) {
             var query = new Parse.Query(Parse.User);
 
             if (searchTerm !== undefined && searchTerm.length > 0) {
               query.startsWith("username", searchTerm);
+            }
+
+            if (corporation !== undefined) {
+              query.equalTo("corporation", corporation);
             }
 
             return query.count();

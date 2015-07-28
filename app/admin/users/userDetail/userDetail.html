@@ -2,13 +2,21 @@
 
   <div class="text-center">
     <h3>{{ userDetailController.user.attributes.firstName }} {{ userDetailController.user.attributes.lastName }}</h3><br/>
-    <i>{{ userDetailController.user.attributes.username }}</i>
   </div>
-
-User detail.
 
   <hr>
 
+  <h5>Username:</h5>
+  <span>{{ userDetailController.user.attributes.username }}</span>
+  <h5>Email Address:</h5>
+  <span>{{ userDetailController.user.attributes.email }}</span>
+  <h5>Account Created:</h5>
+  <span>{{ userDetailController.user.createdAt | date : medium }}</span>
+  <h5>Account Last Updated:</h5>
+  <span>{{ userDetailController.user.updatedAt | date : medium }}</span>
+
+  <hr/>
+  
   <button class="btn btn-danger pull-right" style="margin-left:10px;" ng-click="userDetailController.delete()">
     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
     Delete

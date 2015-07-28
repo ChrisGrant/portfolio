@@ -1,6 +1,6 @@
 'use strict';
 
-define(['text!./userDetailDeleteModal.html', './userDetailDeleteModalController.js'], function(template, userDetailDeleteModalController) {
+define(['text!./deleteModal/userDetailDeleteModal.html', './deleteModal/userDetailDeleteModalController.js'], function(template, userDetailDeleteModalController) {
     return function($scope, $state, $modal, contactsService) {
 
       var self = this;
@@ -20,7 +20,6 @@ define(['text!./userDetailDeleteModal.html', './userDetailDeleteModalController.
 
         modalInstance.result.then(function(selectedIndex) {
           if (selectedIndex === 0) {
-            console.log('deleting user...');
             contactsService.deleteUser(self.user).then(function() {
               $state.go('app.admin.users');
             },

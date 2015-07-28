@@ -6,7 +6,7 @@ define(['./usersController', 'text!./users.html'], function(usersController, tem
             restrict: 'E',
             template: template,
             scope: {},
-            controller: ['$scope', 'contactsService', usersController],
+            controller: ['$scope', 'contactsService', 'corporationsService', usersController],
             controllerAs: 'usersController'
         };
     };
