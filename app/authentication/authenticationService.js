@@ -34,8 +34,19 @@ define(['Parse'], function(Parse) {
     };
    
     authService.isAuthorized = function (authorizedRoles) {
+      if (authorizedRoles === undefined || authorizedRoles.length === 0) {
+        console.warn("Route with no authorizedRoles specified. Defaulting to isAuthenticated for now.");
+        return authService.isAuthenticated();
+      }
+
       if (!angular.isArray(authorizedRoles)) {
         authorizedRoles = [authorizedRoles];
+      }
+
+      for (var i = 0; i < authorizedRoles.length; i++) {
+        if (authorizedRoles[i] === "*") {
+          return authService.isAuthenticated();
+        }
       }
 
       return (authService.isAuthenticated() && 

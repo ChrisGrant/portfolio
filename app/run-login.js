@@ -40,10 +40,12 @@ define([
           if (authenticationService.isAuthenticated(authorizedRoles)) {
             // user is not allowed
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
-            console.error('User is not allowed to see this page. ' + next);
+            console.error('User is not allowed to see this page. ' + next.name);
             event.preventDefault();
 
-            authenticationService.logOut();
+            if ($state.current.name === "" || $state.current.name === undefined) {
+              $state.go('app.contacts.placeholder');
+            }
 
             return;
           }

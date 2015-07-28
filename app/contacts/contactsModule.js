@@ -36,7 +36,7 @@ define([
                     abstract: true,
                     url: '/contacts',
                     data: {
-                        authorizedRoles: ['admin']
+                        // authorizedRoles: ['*']
                     },
                     views: {
                         'content@app': {
