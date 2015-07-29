@@ -5,6 +5,15 @@
           <li ng-class="layoutController.classFor('users')">
             <a href="#/admin/users">Users</a>
           </li>
+          <li class="admin-nav-subpath" ng-show="layoutController.showPath('users.detail')">
+            <a href="#/admin/users/{{layoutController.currentUserDetailPathId()}}"> / {{ layoutController.currentUserDetailPathId() }}</a>
+          </li>
+          <li class="admin-nav-subpath" ng-show="layoutController.showPath('users.detail.edit')">
+            <a class="no-click">/ Edit</a>
+          </li>
+          <li class="admin-nav-subpath" ng-show="layoutController.showPath('users.create')">
+            <a class="no-click">/ New User</a>
+          </li>
           <li ng-class="layoutController.classFor('corporations')">
             <a href="#/admin/corporations">Corporations</a>
           </li>

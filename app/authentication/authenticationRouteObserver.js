@@ -2,15 +2,17 @@
 
 define([
     'app',
-  ], function(app, routeController, contactDetailResolves) {
+    'text!./notAuthorizedTemplate.html'
+  ], function(app, notAuthorizedTemplate) {
 
   // Check to see if the user is logged in on every state change. Otherwise don't let them navigate.
   app.run([
     '$rootScope',
     '$state',
+    '$modal',
     'AUTH_EVENTS',
     'authenticationService',
-    function ($rootScope, $state, AUTH_EVENTS, authenticationService) {
+    function ($rootScope, $state, $modal, AUTH_EVENTS, authenticationService) {
 
       $rootScope.$on(AUTH_EVENTS.loginSuccess, function() {
         $state.go('app.contacts.placeholder');
@@ -42,6 +44,11 @@ define([
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
             console.error('User is not allowed to see this page. ' + next.name);
             event.preventDefault();
+
+            var modalInstance = $modal.open({
+              animation: true,
+              template: notAuthorizedTemplate
+            });
 
             if ($state.current.name === "" || $state.current.name === undefined) {
               $state.go('app.contacts.placeholder');
