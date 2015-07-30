@@ -1,42 +1,28 @@
 'use strict';
 
-/* https://github.com/angular/protractor/blob/master/docs/toc.md */
-
 describe('my app', function() {
 
-
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    browser.get('index.html');
-    expect(browser.getLocationAbsUrl()).toMatch("/view1");
+  it('should have a title', function() {
+    browser.get('');
+    expect(browser.getTitle()).toEqual('Portfolio');
   });
 
+  it('should automatically redirect to /login when location hash/fragment is empty', function() {
+    browser.get('');
+    expect(browser.getLocationAbsUrl()).toMatch("/login");
+  });
 
-  describe('view1', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view1');
-    });
-
+  describe('s login system', function() {
 
     it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
+      browser.get('');
+      browser.pause();
+      element.by('credentials.username').first().sendKeys('Chris');
+      element.by('credentials.password').first().sendKeys('chris');
+      element.by('credentials.password').first().submit();
+      expect(browser.getLocationAbsUrl()).toMatch("/contacts");
     });
 
   });
 
-
-  describe('view2', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/view2');
-    });
-
-
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
-    });
-
-  });
 });

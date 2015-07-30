@@ -9,27 +9,31 @@
 
 <table class="table table-hover">
   <thead>
-    <td>
-      <a ng-click="contactListController.sortClicked('username')">
-        Name
-        <span ng-show="contactListController.sortType == 'username'"
-              ng-class="contactListController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
-    <td>
-      <a ng-click="contactListController.sortClicked('email')">
-        Email
-        <span ng-show="contactListController.sortType == 'email'"
-              ng-class="contactListController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
-              class="glyphicon"
-              aria-hidden="true">
-        </span>
-      </a>
-    </td>
+    <tr>
+      <td>
+        <a ng-click="contactListController.sortClicked('username')">
+          Name
+          <span ng-show="contactListController.sortType == 'username'"
+                ng-class="contactListController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+      <td>
+        <a ng-click="contactListController.sortClicked('email')">
+          Email
+          <span ng-show="contactListController.sortType == 'email'"
+                ng-class="contactListController.sortReverse ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'"
+                class="glyphicon"
+                aria-hidden="true">
+          </span>
+        </a>
+      </td>
+    </tr>
   </thead>
+
+  <tbody>
 
   <tr ng-repeat="contact in contactListController.contacts"
       ui-sref="app.contacts.detail.main({id: contact.attributes.username})">
@@ -37,13 +41,17 @@
     <td>{{ contact.attributes.email }}</td>
   </tr>
 
+  </tbody>
+
   <tfoot>
-    <td colspan="3">
+    <tr>
+    <td colspan="2">
       <pagination-bar current-page="contactListController.currentPage" 
                       number-of-items="contactListController.numberOfContacts"
                       page-changed="contactListController.pageChanged">
       </pagination-bar>
     </td>
+    </tr>
   </tfoot>
 
 </table>

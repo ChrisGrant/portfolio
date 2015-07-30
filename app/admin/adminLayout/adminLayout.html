@@ -6,7 +6,7 @@
             <a href="#/admin/users">Users</a>
           </li>
           <li class="admin-nav-subpath" ng-show="layoutController.showPath('users.detail')">
-            <a href="#/admin/users/{{layoutController.currentUserDetailPathId()}}"> / {{ layoutController.currentUserDetailPathId() }}</a>
+            <a ng-href="#/admin/users/{{layoutController.currentUserDetailPathId()}}"> / {{ layoutController.currentUserDetailPathId() }}</a>
           </li>
           <li class="admin-nav-subpath" ng-show="layoutController.showPath('users.detail.edit')">
             <a class="no-click">/ Edit</a>

@@ -33,7 +33,7 @@
         Corporation
         <div class="btn-group pull-right">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="glyphicon glyphicon-filter" arian-hidden="true"></span><span class="caret"></span>
+            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span><span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
             <li ng-class="usersController.classForFilterItem()">
@@ -78,6 +78,7 @@
     </tr>
 
     <tfoot ng-show="totalItems > usersController.itemsPerPage">
+      <tr>
       <td colspan="5" class="text-center">
             <pagination boundary-links="true" 
                         total-items="totalItems"
@@ -91,6 +92,7 @@
                         last-text="&raquo;">
             </pagination>
       </td>
+      </tr>
     </tfoot>
 
   </table>

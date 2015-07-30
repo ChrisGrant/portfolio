@@ -1,9 +1,9 @@
 <div class="well">
 	<h1>{{ contactDetailController.contact.attributes.username }}</h1>
 	<tab-bar titles="contactDetailController.titles" current-index="contactDetailController.tabIndex"></tab-bar>
-	<section class="contact-detail">
+	<div class="contact-detail">
 		<loading-spinner spinner-id="contact-detail">
 			<div ui-view="contact-detail-tab"></div>
 		</loading-spinner>
-	</section>
+	</div>
 </div>
