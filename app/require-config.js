@@ -15,10 +15,13 @@ require.config({
         'uiRouter': {
             deps: ['angular']
         },
+        'angularAnimate': {
+            deps: ['angular']
+        },
         'Parse': {
           'exports': 'Parse'
         },
     },
     priority: ['angular'],
-    deps: ['angular-bootstrap']
+    deps: ['angular', 'angular-bootstrap']
 });

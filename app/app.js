@@ -40,7 +40,7 @@ define([
           }
         }
       });
-      
+
       $urlRouterProvider.otherwise('/contacts');
     }
   ]);

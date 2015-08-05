@@ -28,14 +28,14 @@ define(['Parse'], function(Parse) {
         $rootScope.$digest();
       });
     };
-   
+
     authService.isAuthenticated = function () {
       return Parse.User.current() !== null;
     };
-   
-    authService.isAuthorized = function (authorizedRoles) {
+
+    authService.isAuthorized = function (authorizedRoles, next) {
       if (authorizedRoles === undefined || authorizedRoles.length === 0) {
-        console.warn("Route with no authorizedRoles specified. Defaulting to isAuthenticated for now.");
+        console.warn("Route '"+ next.name +"' has no authorizedRoles specified. Defaulting to isAuthenticated for now.");
         return authService.isAuthenticated();
       }
 
@@ -49,7 +49,7 @@ define(['Parse'], function(Parse) {
         }
       }
 
-      return (authService.isAuthenticated() && 
+      return (authService.isAuthenticated() &&
         authorizedRoles.indexOf(Parse.User.current().attributes.role) !== -1);
     };
 

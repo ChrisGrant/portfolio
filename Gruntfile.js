@@ -80,6 +80,12 @@ module.exports = function(grunt) {
               { expand: true, src: ['node_modules/bootstrap/fonts/**.*'], dest: "<%= grunt.config.get('outputFolder') %>/fonts/", flatten: true, filter: 'isFile' },
             ]
           },
+          dev: {
+            files: [
+              { expand: true, src: ['**/*.js'], dest: "<%= grunt.config.get('outputFolder') %>/", cwd: 'app'},
+              { expand: true, src: ['**/*.html'], dest: "<%= grunt.config.get('outputFolder') %>/", cwd: 'app'}
+            ]
+          }
         },
 
         requirejs: {
@@ -206,7 +212,7 @@ module.exports = function(grunt) {
     var commonAssembleTasks =  ['jshint', 'htmlangular', 'clean', 'copy'];
 
     // Builds and validates the project.
-    grunt.registerTask('build:dev', ['config:dev'].concat(commonAssembleTasks.concat(['requirejs:dev', 'less:dev'])));
+    grunt.registerTask('build:dev', ['config:dev'].concat(commonAssembleTasks.concat(['copy:dev', 'less:dev'])));
     grunt.registerTask('build:prod', ['config:prod'].concat(commonAssembleTasks.concat(['requirejs:prod', 'less:prod', 'htmlmin:prod'])));
 
     grunt.registerTask('serve:dev', ['http-server', 'build:dev', 'concurrent:dev']);

@@ -37,8 +37,8 @@ define([
           return;
         }
 
-        if (!authenticationService.isAuthorized(authorizedRoles)) {
-        
+        if (!authenticationService.isAuthorized(authorizedRoles, next)) {
+
           if (authenticationService.isAuthenticated(authorizedRoles)) {
             // user is not allowed
             $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
@@ -63,7 +63,7 @@ define([
             $state.go('login');
           }
         }
-                
+
       });
     }
   ]);
